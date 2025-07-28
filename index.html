@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GREENSHOP Registration</title>
+  </head>
+  <body
+    style="
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #333;
+      padding: 30px;
+    "
+  >
+    <div style="max-width: 400px; margin: 0 auto">
+      <div
+        style="
+          text-align: center;
+          margin-bottom: 25px;
+          font-size: 20px;
+          font-weight: 400;
+          display: flex;
+          justify-content: center;
+          gap: 6px;
+        "
+      >
+        <span style="font-weight: 600; color: #000">Login</span>
+        <span style="color: #28a745">| Register</span>
+      </div>
+
+      <div style="text-align: center; margin-bottom: 20px; font-size: 14px">
+        Enter your email and password to register.
+      </div>
+
+      <form>
+        <!-- Username -->
+        <div style="margin-bottom: 15px; position: relative">
+          <input
+            type="text"
+            placeholder="Username"
+            style="
+              width: 100%;
+              height: 42px;
+              padding: 0 15px;
+              border: 1px solid #ddd;
+              border-radius: 6px;
+              font-size: 14px;
+              box-sizing: border-box;
+              line-height: 42px;
+            "
+            required
+          />
+        </div>
+
+        <!-- Email -->
+        <div style="margin-bottom: 15px; position: relative">
+          <input
+            type="email"
+            placeholder="Enter your email address"
+            style="
+              width: 100%;
+              height: 42px;
+              padding: 0 15px;
+              border: 1px solid #ddd;
+              border-radius: 6px;
+              font-size: 14px;
+              box-sizing: border-box;
+              line-height: 42px;
+            "
+            required
+          />
+        </div>
+
+        <!-- Password -->
+        <div style="margin-bottom: 15px; position: relative">
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            style="
+              width: 100%;
+              height: 42px;
+              padding: 0 40px 0 15px;
+              border: 1px solid #ddd;
+              border-radius: 6px;
+              font-size: 14px;
+              box-sizing: border-box;
+              line-height: 42px;
+            "
+            required
+          />
+          <button
+            type="button"
+            onclick="toggleVisibility('password', this)"
+            aria-label="Toggle password visibility"
+            style="
+              position: absolute;
+              top: 50%;
+              right: 10px;
+              transform: translateY(-50%);
+              border: none;
+              background: none;
+              cursor: pointer;
+              padding: 0;
+              height: 24px;
+              width: 24px;
+            "
+          >
+            <svg
+              id="icon-password"
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="#777"
+              viewBox="0 0 24 24"
+              style="vertical-align: middle"
+            >
+              <!-- Closed eye initially -->
+              <path
+                d="M12 5c-7 0-10 7-10 7s3 7 10 7 10-7 10-7-3-7-10-7zm0 12a5 5 0 110-10 5 5 0 010 10z"
+              />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Confirm Password -->
+        <div style="margin-bottom: 25px; position: relative">
+          <input
+            type="password"
+            id="confirm-password"
+            placeholder="Confirm Password"
+            style="
+              width: 100%;
+              height: 42px;
+              padding: 0 40px 0 15px;
+              border: 1px solid #ddd;
+              border-radius: 6px;
+              font-size: 14px;
+              box-sizing: border-box;
+              line-height: 42px;
+            "
+            required
+          />
+          <button
+            type="button"
+            onclick="toggleVisibility('confirm-password', this)"
+            aria-label="Toggle confirm password visibility"
+            style="
+              position: absolute;
+              top: 50%;
+              right: 10px;
+              transform: translateY(-50%);
+              border: none;
+              background: none;
+              cursor: pointer;
+              padding: 0;
+              height: 24px;
+              width: 24px;
+            "
+          >
+            <svg
+              id="icon-confirm-password"
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="#777"
+              viewBox="0 0 24 24"
+              style="vertical-align: middle"
+            >
+              <!-- Closed eye initially -->
+              <path
+                d="M12 5c-7 0-10 7-10 7s3 7 10 7 10-7 10-7-3-7-10-7zm0 12a5 5 0 110-10 5 5 0 010 10z"
+              />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+          </button>
+        </div>
+
+        <button
+          type="submit"
+          style="
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+          "
+        >
+          Register
+        </button>
+      </form>
+    </div>
+
+    <script>
+      function toggleVisibility(inputId, button) {
+        const input = document.getElementById(inputId);
+        const svg = button.querySelector("svg");
+        if (input.type === "password") {
+          input.type = "text";
+          // open eye icon
+          svg.innerHTML =
+            '<path d="M12 5c-7 0-10 7-10 7s3 7 10 7 10-7 10-7-3-7-10-7zm0 12a5 5 0 110-10 5 5 0 010 10z"/><circle cx="12" cy="12" r="3"/>';
+        } else {
+          input.type = "password";
+          // closed eye icon with slash
+          svg.innerHTML = `
+          <path d="M1 12s4-7 11-7c2.58 0 4.84 1.06 6.56 2.76"/>
+          <path d="M22 12s-4 7-11 7c-2.58 0-4.84-1.06-6.56-2.76"/>
+          <path d="M3 3l18 18" stroke="#777" stroke-width="2" stroke-linecap="round"/>
+        `;
+        }
+      }
+    </script>
+  </body>
+</html>
